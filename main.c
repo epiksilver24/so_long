@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/08 19:15:45 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:16:44 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ t_game *ft_lsnew()
 
 int main(int ac, char **av )
 {
-	ac = 1;
-	ac--;
 	t_game *game;
 	game = ft_lsnew();
-	map_add(av, game);
-	printf("%s",game->map[0]);
-
+	if (ac ==  2)
+	{
+		map_add(av, game);
+		printf("%s",game->map[0]);
+	}
 	return (0);
 }
