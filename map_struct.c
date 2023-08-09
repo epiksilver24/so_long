@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/08 19:13:09 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:35:39 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,18 @@ int	map_add(char **av, t_game *game)
 	int		fd;
 	int		indi;
 	char	*maping;
-	char	**mapa;
-	maping = ft_strdup("");
+	int		len;
+
+	len = ft_strlen(av[1]);
+	printf("%d",len);
+	if(!((av[1][len - 1] == 'r') && (av[1][len -2] == 'e') 
+				&& (av[1][len - 3] == 'b') && (av[1][len - 4] = '.')))
+		return (-1);
+	maping  = ft_strdup("");
 	line = ft_strdup("");
 	fd = open(av[1],O_RDONLY);
 	indi = 1;
-	
+		
 	
 	while(line)
 	{
@@ -43,8 +49,6 @@ int	map_add(char **av, t_game *game)
 			maping = ft_strjoin(maping,line);
 		indi++;
 	}
-
-	mapa = ft_split(maping, '\n');
-	game->map = mapa;
+	game->map = ft_split(maping,'\n');
 	return (1);
 }
