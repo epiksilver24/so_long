@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/09 11:13:47 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:09:39 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,29 @@ int	map_error_size(t_game *game)
 	game->with_size =(int) i;
 	return (1);
 }
+// 0 espacio vacio; 1 muro; C moneda; E salida; P posicion inicial
+int  map_tiles_correct(t_game *game)
+{
+	int	indi;
+	int	a;
+	indi = 0;
+	char *f;
+
+	f = "01CEP";
+	while (game->map[indi])
+	{
+		a = 0;
+		while (game->map[indi][a++])
+		{
+			if (ft_strchr(f, game->map[indi][a]) == NULL)
+			{
+				printf("\nerror de mapa caracteres\n");
+				return (-1);
+			}
+		}
+		indi++;
+	}
+	return (1);
+}
+
+

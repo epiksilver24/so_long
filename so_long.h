@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/09 10:49:27 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:48:25 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_game
 
 int map_add(char **av, t_game *game);
 int map_error_size(t_game *game);
+int map_tiles_correct(t_game *game);
 t_game *ft_lsnew();
 
 #endif
