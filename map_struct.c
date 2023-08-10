@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/09 14:09:39 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/10 20:12:03 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ int	map_add(char **av, t_game *game)
 	int		len;
 
 	len = ft_strlen(av[1]);
-	printf("%d",len);
 	if(!((av[1][len - 1] == 'r') && (av[1][len -2] == 'e') 
 				&& (av[1][len - 3] == 'b') && (av[1][len - 4] = '.')))
 		return (-1);
 	maping  = ft_strdup("");
 	line = ft_strdup("");
+	if (line == NULL || maping == NULL)
+		return (-2);
 	fd = open(av[1],O_RDONLY);
 	indi = 1;
 	while(line)
@@ -44,12 +45,22 @@ int	map_add(char **av, t_game *game)
 		free(line);
 		line = get_next_line(fd);
 		if (line && line[0] == '\n')
-			return (-1);
+		{
+			free(maping);
+			free(line);
+			return (-5);
+		}
 		if (line != NULL)
+		{
 			maping = ft_strjoin(maping,line);
+			if (maping == NULL)
+				return (-2);
+		}
 		indi++;
 	}
 	game->map = ft_split(maping,'\n');
+	free(maping);
+//	free(line);
 	return (1);
 }
 
@@ -65,10 +76,7 @@ int	map_error_size(t_game *game)
 	{
 		compare = ft_strlen(game->map[i]);
 		if (compare != len)
-		{
-			printf("\n error tamano\n");
-			return (-1);
-		}
+			return (-3);
 		i++;
 	}
 	game->lenght_size =  (int)len;
@@ -90,10 +98,7 @@ int  map_tiles_correct(t_game *game)
 		while (game->map[indi][a++])
 		{
 			if (ft_strchr(f, game->map[indi][a]) == NULL)
-			{
-				printf("\nerror de mapa caracteres\n");
-				return (-1);
-			}
+				return (-4);
 		}
 		indi++;
 	}

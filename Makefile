@@ -1,6 +1,6 @@
 NAME := so_long
 
-SRC := map_struct.c main.c \
+SRC := map_struct.c main.c errors.c  \
 
 INCLUDE		=	-I.
 

@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/09 13:48:25 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:36:27 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int map_add(char **av, t_game *game);
 int map_error_size(t_game *game);
 int map_tiles_correct(t_game *game);
 t_game *ft_lsnew();
+int errors_path(int error, t_game *game);
+void	free_map(t_game *game, int error);
 
 #endif

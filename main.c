@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/09 13:48:04 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/10 20:12:15 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ int main(int ac, char **av )
 {
 	t_game *game;
 	game = ft_lsnew();
+	int error;
 	if (ac ==  2)
 	{
-		if(map_add(av, game) == -1)
-			return (-1);
-		map_error_size(game);		
-		map_tiles_correct(game);
-		printf("largo de pantalla %d \n",game->lenght_size);
-		printf("ancho de pantalla %d\n ",game->with_size);
-		printf("\n");
-		printf("%s",game->map[0]);
-		printf("%s",game->map[1]);
-		printf("%s",game->map[2]);
+		//if(map_add(av, game) == -1)
+		error = map_add(av, game);
+		if (errors_path(error, game) == -1 )
+			return (0);
+		printf("pokemon");
+		error = map_error_size(game);		
+		error = map_tiles_correct(game);
+		if (errors_path(error, game) == -1)
+				return (0);
 	}
 	return (0);
 }
