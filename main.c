@@ -37,18 +37,40 @@ int main(int ac, char **av )
 {
 	t_game *game;
 	game = ft_lsnew();
+	int fd;
 	int error;
 	if (ac ==  2)
 	{
 		//if(map_add(av, game) == -1)
-		error = map_add(av, game);
+		fd = open(av[1],O_RDONLY);
+		printf("extension\n");
+		if(errors_path(path_extension(av[1]),game) == -1)
+			return (0);
+		printf("add map\n");
+		error = map_add(fd, game);
 		if (errors_path(error, game) == -1 )
 			return (0);
-		printf("pokemon");
-		error = map_error_size(game);		
-		error = map_tiles_correct(game);
-		if (errors_path(error, game) == -1)
-				return (0);
+
+		print_map(game->map);
+
+		//int a;
+		//a = 0;
+		//while (game->map[a])
+		//	free(game->map[a]);
+		errors_path(-3, game);
+		free(game);
+		
+		//	printf("error = %d\n",error);
+	//	error = map_error_size(game);		
+//		error = map_tiles_correct(game);
+	//	printf("error = %d",error);
+
+	//	if (errors_path(error, &game) == -1)
+	//	{
+	//		printf("error");
+	//			free(game);
+	//			return (0);
+	//	}
 	}
 	return (0);
 }

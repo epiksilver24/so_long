@@ -16,14 +16,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
 	size_t	leng;
-
+	if(!(ft_strlen(s1)) && !(ft_strlen(s2)))
+		return (ft_strdup(""));
 	str = NULL;
 	leng = (ft_strlen(s1) + ft_strlen(s2) + 1);
-	str = malloc((sizeof(char)) * leng);
+	str = (char *)malloc((sizeof(char)) * leng);
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, (char *)s1, leng);
 	ft_strlcat(str, (char *)s2, leng);
+	free((char *)s1);
 	return (str);
 }
 

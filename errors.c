@@ -26,7 +26,7 @@ int errors_path(int error, t_game *game)
 		free_map(game, error);
 	else if (error == -5)
 		write(1,"error n",7);
-	free(game);
+	free(game->map);
 //	exit(EXIT_FAILURE);
 
 	return (-1);
@@ -36,18 +36,12 @@ int errors_path(int error, t_game *game)
 
 void	free_map(t_game *game, int error)
 {
-	int	i;
-	
-	i = 0;
-	while (game->map[i])
-		i++;
-	--i;
-	while (i >= 0)
-	{
-		free(game->map[i]);
-		i--;
-	}
-	free(game->map);
+	int b;
+
+	b = -1;
+	while (game->map[++b])
+		free(game->map[b]);
+//	free(game->map);
 	write(1,"error ", 6);
 	if (error == -4)
 		write(1,"mapa caracteres",15);

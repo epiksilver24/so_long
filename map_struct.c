@@ -22,45 +22,30 @@
 //}	t_game;
 
 
-int	map_add(char **av, t_game *game)
+int	map_add(int fd, t_game *game)
 {
-	char	*line;
-	int		fd;
-	int		indi;
-	char	*maping;
-	int		len;
-
-	len = ft_strlen(av[1]);
-	if(!((av[1][len - 1] == 'r') && (av[1][len -2] == 'e') 
-				&& (av[1][len - 3] == 'b') && (av[1][len - 4] = '.')))
-		return (-1);
-	maping  = ft_strdup("");
+	char *line;
+	char *all_line;
 	line = ft_strdup("");
-	if (line == NULL || maping == NULL)
+	all_line = ft_strdup("");
+	if(line == NULL || all_line == NULL)
 		return (-2);
-	fd = open(av[1],O_RDONLY);
-	indi = 1;
-	while(line)
+	while (line)
 	{
 		free(line);
 		line = get_next_line(fd);
-		if (line && line[0] == '\n')
+		if(line)
 		{
-			free(maping);
-			free(line);
-			return (-5);
-		}
-		if (line != NULL)
-		{
-			maping = ft_strjoin(maping,line);
-			if (maping == NULL)
+			if(line && line[0] == '\n')
+			{
+				free(line);
 				return (-2);
+			}
+			all_line = ft_strjoin(all_line, line);
 		}
-		indi++;
 	}
-	game->map = ft_split(maping,'\n');
-	free(maping);
-//	free(line);
+	game->map = ft_split(all_line, '\n');
+	free(all_line);
 	return (1);
 }
 

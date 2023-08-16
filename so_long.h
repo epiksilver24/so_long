@@ -29,11 +29,13 @@ typedef struct s_game
 
 
 
-int map_add(char **av, t_game *game);
+int map_add(int fd, t_game *game);
+int	path_extension(char *av);
 int map_error_size(t_game *game);
 int map_tiles_correct(t_game *game);
 t_game *ft_lsnew();
 int errors_path(int error, t_game *game);
 void	free_map(t_game *game, int error);
+void print_map(char **map);
 
 #endif
