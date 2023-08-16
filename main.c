@@ -52,6 +52,8 @@ int main(int ac, char **av )
 			return (0);
 		if (errors_path(map_farlands(game), game) == -1)
 			return (0);
+		if (errors_path(map_char_events(game), game) == -1)
+			return (0);
 		errors_path(-303,game);
 //		free(game);
 	}

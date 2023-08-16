@@ -26,6 +26,7 @@ int	map_add(int fd, t_game *game)
 {
 	char *line;
 	char *all_line;
+
 	line = ft_strdup("");
 	all_line = ft_strdup("");
 	if(line == NULL || all_line == NULL)
@@ -99,26 +100,21 @@ int	map_farlands(t_game *game)
 
 	row = 0;
 	col = -1;
-
-	//	primera fila
 	while(game->map[row][++col])
 		if(game->map[row][col] != '1')
 			return (-7);
-	// ultima columna
 	col--;
 	row = -1;
 	while (game->map[++row])
 		if(game->map[row][col] != '1')
 			return (-7);
 	row--;
-	//ultima fila
 	while (col >= 0)
 	{	
 		if (game->map[row][col] != '1')
 			return (-7);
 		col--;
 	}
-	//primera fila
 	col = 0;
 	while (row >= 0)
 	{
@@ -126,15 +122,14 @@ int	map_farlands(t_game *game)
 			return (-7);
 		row--;
 	}
-//	primera columna
-//	row = -1;
-//	col = 0;
-//	while (game->map[++row] && col >= 0)
-//	{
-//		if(game->map[row][col] != '1')
-//			return (-7);
-//	}
 	return (0);
 }
 
-
+int map_char_events(t_game *game)
+{
+	if (count_char(game, 'P') == -8)
+		return (-4);
+	else if(count_char(game ,'E') == -8)
+		return (-4);
+	return (0);
+}
