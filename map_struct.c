@@ -39,6 +39,7 @@ int	map_add(int fd, t_game *game)
 			if(line && line[0] == '\n')
 			{
 				free(line);
+				free(all_line);
 				return (-2);
 			}
 			all_line = ft_strjoin(all_line, line);

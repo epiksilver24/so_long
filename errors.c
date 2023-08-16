@@ -31,6 +31,7 @@ int errors_path(int error, t_game *game)
 	else if (error == -303)
 		free_map(game,error);
 	free(game->map);
+	free(game);
 //	exit(EXIT_FAILURE);
 
 	return (-1);

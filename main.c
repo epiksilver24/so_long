@@ -38,29 +38,25 @@ int main(int ac, char **av )
 	t_game *game;
 	game = ft_lsnew();
 	int fd;
-	int error;
 	if (ac ==  2)
 	{
 		fd = open(av[1],O_RDONLY);
-		error = path_extension(av[1]);
-		if(errors_path(error,game) == -1)
+		if(errors_path(path_extension(av[1]),game) == -1)
 			return (0);
-		error = map_add(fd, game);
-		if (errors_path(error, game) == -1 )
+		if (errors_path(map_add(fd, game), game) == -1)
 			return (0);
 		print_map(game->map);
-		error = map_error_size(game);		
-		error = map_tiles_correct(game);
-		error = map_farlands(game);
-		if (errors_path(error, game) == -1)
-		{
-				free(game);
-				return (0);
-		}
+		if (errors_path(map_error_size(game), game) == -1)
+			return (0);
+		if (errors_path(map_tiles_correct(game), game) == -1)
+			return (0);
+		if (errors_path(map_farlands(game), game) == -1)
+			return (0);
 		errors_path(-303,game);
-		free(game);
+//		free(game);
 	}
 	char *checkmalloc;
+	printf("\nmalloc 1 bit\n");
 	checkmalloc = malloc(1);
 	checkmalloc[0] = '\0';
 	return (0);
