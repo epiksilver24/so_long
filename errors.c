@@ -26,6 +26,10 @@ int errors_path(int error, t_game *game)
 		free_map(game, error);
 	else if (error == -5)
 		write(1,"error n",7);
+	else if (error == -7)
+		free_map(game,error);
+	else if (error == -303)
+		free_map(game,error);
 	free(game->map);
 //	exit(EXIT_FAILURE);
 
@@ -47,5 +51,9 @@ void	free_map(t_game *game, int error)
 		write(1,"mapa caracteres",15);
 	else if (error == -3)
 		write(1,"mapa dimension",14);
+	else if (error == -7)
+		write(1,"farlands error",14);
+	else if (error == -303)
+		write(1,"limpiando mapa",14);
 }
 

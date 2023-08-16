@@ -37,5 +37,6 @@ t_game *ft_lsnew();
 int errors_path(int error, t_game *game);
 void	free_map(t_game *game, int error);
 void print_map(char **map);
+int map_farlands(t_game *game);
 
 #endif

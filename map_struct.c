@@ -91,3 +91,49 @@ int  map_tiles_correct(t_game *game)
 }
 
 
+int	map_farlands(t_game *game)
+{
+	int row;
+	int col;
+
+	row = 0;
+	col = -1;
+
+	//	primera fila
+	while(game->map[row][++col])
+		if(game->map[row][col] != '1')
+			return (-7);
+	// ultima columna
+	col--;
+	row = -1;
+	while (game->map[++row])
+		if(game->map[row][col] != '1')
+			return (-7);
+	row--;
+	//ultima fila
+	while (col >= 0)
+	{	
+		if (game->map[row][col] != '1')
+			return (-7);
+		col--;
+	}
+	//primera fila
+	col = 0;
+	while (row >= 0)
+	{
+		if (game->map[row][col] != '1')
+			return (-7);
+		row--;
+	}
+//	primera columna
+//	row = -1;
+//	col = 0;
+//	while (game->map[++row] && col >= 0)
+//	{
+//		if(game->map[row][col] != '1')
+//			return (-7);
+//	}
+	return (0);
+}
+
+
