@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/08 19:18:56 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:36:27 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,16 @@ typedef struct s_game
 
 
 
-int map_add(char **av, t_game *game);
+int map_add(int fd, t_game *game);
+int	path_extension(char *av);
+int map_error_size(t_game *game);
+int map_tiles_correct(t_game *game);
 t_game *ft_lsnew();
+int errors_path(int error, t_game *game);
+void	free_map(t_game *game, int error);
+void print_map(char **map);
+int map_farlands(t_game *game);
+int count_char(t_game *game, char pj2);
+int map_char_events(t_game *game);
 
 #endif
