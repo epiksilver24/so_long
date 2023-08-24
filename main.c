@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/10 20:12:15 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/24 20:24:13 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,17 @@ int main(int ac, char **av )
 			return (0);
 		if (errors_path(map_char_events(game), game) == -1)
 			return (0);
-		errors_path(-303,game);
-//		free(game);
 	}
+	else 
+		write(1,"error",5);
+	// backtraking
+	print_map(game->map);
+	map_backtraking(game);
+//	printf("valor de p row %i, col %i",game->pr,game->pc);	
+	print_map(game->map);
+	print_map(game->maps);
+	//map_backtraking(game);
+	errors_path(-303,game);
 	char *checkmalloc;
 	printf("\nmalloc 1 bit\n");
 	checkmalloc = malloc(1);

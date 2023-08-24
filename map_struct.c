@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/10 20:12:03 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/24 20:21:50 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	map_add(int fd, t_game *game)
 		}
 	}
 	game->map = ft_split(all_line, '\n');
+	game->maps = ft_split(all_line, '\n');
 	free(all_line);
 	return (1);
 }
@@ -77,13 +78,16 @@ int  map_tiles_correct(t_game *game)
 	int	a;
 	indi = 0;
 	char *f;
-
+	
+	game->coin = 0; 
 	f = "01CEP";
 	while (game->map[indi])
 	{
 		a = 0;
 		while (game->map[indi][a++])
 		{
+			if(game->map[indi][a] == 'C')
+				game->coin++;
 			if (ft_strchr(f, game->map[indi][a]) == NULL)
 				return (-4);
 		}
