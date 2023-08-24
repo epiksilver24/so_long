@@ -18,16 +18,18 @@ all: ${NAME}  ${callforlib}
 	
 %.o:%.c Makefile
 	make -C $(LIBFT_DIR)
+	make -C mlx
 	@$(CC) -g $(CFLAGS) $(INCLUDE) -c $< -o $@ 
 
 ${NAME}: ${OBJSR} | ${callforlib}
-	${CC} -g ${CFLAGS}   -o ${NAME} ${OBJSR} libft/libft.a
+	${CC} -g ${CFLAGS}   -o ${NAME} ${OBJSR} libft/libft.a mlx/libmlx.a  -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 callforlib:
 	${MAKE} -C libft/
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C mlx clean
 	rm -rf $(OBJS)
 
 fclean: clean
