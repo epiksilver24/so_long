@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/24 20:24:13 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/25 04:15:02 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int main(int ac, char **av )
 	int fd;
 	if (ac ==  2)
 	{
+		game->mlx = mlx_init();
 		fd = open(av[1],O_RDONLY);
 		if(errors_path(path_extension(av[1]),game) == -1)
 			return (0);
@@ -63,6 +64,10 @@ int main(int ac, char **av )
 //	printf("valor de p row %i, col %i",game->pr,game->pc);	
 	print_map(game->map);
 	print_map(game->maps);
+	game->mlx_w = mlx_new_window (game->mlx, (game->lenght_size * 32) , (game->with_size * 32) , "Hello World");
+	src_tiles(game);
+	mlx_put_image_to_window(game->mlx, game->mlx_w, "sprite/wall.xpm", 32 , 32 );
+	mlx_loop(game->mlx_w);
 	//map_backtraking(game);
 	errors_path(-303,game);
 	char *checkmalloc;

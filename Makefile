@@ -1,7 +1,7 @@
 NAME := so_long
 
 SRC := map_struct.c main.c errors.c path_error.c  utils.c count_01CEP.c \
-	map_backtraking.c
+	map_backtraking.c tiles_game.c map_draw.c
 
 INCLUDE		=	-I.
 

@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/24 20:21:48 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/25 03:29:22 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ typedef struct s_game
 	int		pc;
 	int		coin;
 	int		exit;
+	void	*mlx;
+	void	*mlx_w;
+	char	*dorrexit;
+	char	*coin2;
+	char	*wall;
+	char	*pj;
+	char	*floor;
 }	t_game;
 
 int map_add(int fd, t_game *game);
@@ -46,5 +53,7 @@ int count_char(t_game *game, char pj2);
 int map_char_events(t_game *game);
 void map_backtraking(t_game *game);
 int bt_confirm(t_game *game, int i, int j);
+void draw_window(t_game *game);
+void src_tiles(t_game *game);
 
 #endif
