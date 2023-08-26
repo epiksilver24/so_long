@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/26 03:29:55 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/26 05:45:07 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int closes(int keycode);
 //typedef struct s_game
 //{
 //	int			**map;
@@ -75,12 +74,13 @@ int main(int ac, char **av )
 	add_path_img(game);	
 	game->mlx_w = mlx_new_window (game->mlx, game->lenght_size  * 40, game->with_size * 40 , "Hello World");
 	printf("valor main game %p",game);
+	print_map(game->maps);
 	draw_window(game);
 	img_ptr = 	mlx_xpm_file_to_image(game->mlx, "sprite/wall.xpm", &i, &j);
 //	printf("valor de img %p",img_ptr);
 //	mlx_put_image_to_window(game->mlx, game->mlx_w, img_ptr, (1 *50), (1 * 50));
 	mlx_hook(game->mlx_w, 17, 1L << 0 , (void *)exit, NULL);
-	mlx_hook(game->mlx_w, 2, 1L << 0 , (void *) closes, NULL);
+	mlx_hook(game->mlx_w, 2, 1L << 0 , (void *) moviment, game);
 	mlx_loop(game->mlx);
 	//printf("pokemon negro");
 
@@ -90,16 +90,23 @@ int main(int ac, char **av )
 	printf("\nmalloc 1 bit\n");
 	checkmalloc = malloc(1);
 	checkmalloc[0] = '\0';
-
-
-
 	return (0);
 }
-
-int closes(int keycode)
+int moviment(int keycode, t_game *game)
 {
-	printf("\n%i",keycode);
-	if(keycode == 53)
+	int works;
+	printf("\npj %c , row %i, col %i\n",game->maps[game->pjy][game->pjx],game->pjy,game->pjx);
+//	printf("\n%i",keycode);
+
+	if(keycode == 53 )
 		exit(0);
+	if (keycode == 13 || keycode == 126)
+		works  = control_w(game);
+	if (keycode == 1 || keycode == 125)
+		works  = control_s(game);
+	if (keycode == 2 || keycode == 124)
+		works  = control_d(game);
+	if (keycode == 0 ||  keycode == 123)
+		works  = control_a(game);
 	return  (0);
 }

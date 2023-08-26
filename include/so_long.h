@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/26 02:54:29 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/26 05:32:41 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_game
 	char 	**maps;
 	int		lenght_size;
 	int		with_size;
+	int		pjy;
+	int		pjx;
 	int		pr;
 	int		pc;
 	int		coin;
@@ -40,7 +42,6 @@ typedef struct s_game
 }	t_game;
 
 
-#define FLOOR_XPM "sprite/wall.xpm"
 
 
 int map_add(int fd, t_game *game);
@@ -61,5 +62,10 @@ void draw_window(t_game *game);
 void src_tiles(t_game *game);
 int ft_close_game(t_game *game);
 void add_path_img(t_game *game);
+int moviment(int keycode, t_game *game);
+int control_w( t_game *game);
+int control_s( t_game *game);
+int control_d( t_game *game);
+int control_a( t_game *game);
 
 #endif

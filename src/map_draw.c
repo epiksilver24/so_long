@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 03:20:47 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/26 03:29:51 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/26 05:04:57 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void draw_window(t_game *game)
 	int col;
 	row = 0;
 	col = 0;
-//	img = mlx_xpm_file_to_image(game->mlx,"sprite/floor.xpm", &i, &j);
-
 	while (game->maps[row])
 	{
 		while (game->maps[row][col])
@@ -57,8 +55,6 @@ void draw_window(t_game *game)
 				mlx_put_image_to_window(game->mlx,
 					game->mlx_w, game->floor, col * 40, row * 40);
 			col++;
-
-	//	mlx_put_image_to_window(game->mlx, game->mlx_w,img, col * 40  , row * 40  );
 		}
 		col = 0;
 		row++;

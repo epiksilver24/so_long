@@ -2,6 +2,7 @@ NAME := so_long
 
 SRC := src/map_struct.c src/main.c src/errors.c src/path_error.c  src/utils.c src/count_01CEP.c \
 	src/map_backtraking.c src/tiles_game.c src/map_draw.c src/exit_game.c \
+	src/controls/controlls.c
 
 INCLUDE		=	-I.
 
