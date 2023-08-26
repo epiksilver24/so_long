@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 00:19:27 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 01:03:45 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main(int ac, char **av )
 
 	add_path_img(game);	
 	game->mlx_w = mlx_new_window (game->mlx, game->lenght_size  * 40, game->with_size * 40 , "Hello World");
-//	draw_window(game);
+	draw_window(game);
 	fd = 0;
 	printf("\n 1 valor de fd %i\n",fd);
 	fd = mlx_hook(game->mlx_w, 2, 1L << 0 , (void *) moviment, game);
