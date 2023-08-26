@@ -6,20 +6,13 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/26 05:45:07 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 00:19:27 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 #include <unistd.h>
 #include <fcntl.h>
-
-//typedef struct s_game
-//{
-//	int			**map;
-//	int			lenght_size;
-//	int			with_size;
-//}	t_game;
 
 t_game *ft_lsnew()
 {
@@ -30,6 +23,7 @@ t_game *ft_lsnew()
 	game->map = NULL;
 	game->lenght_size = -1;
 	game->with_size = -1;
+	game->coin = 0;
 	return (game);
 }
 
@@ -58,33 +52,25 @@ int main(int ac, char **av )
 	}
 	else 
 		write(1,"error",5);
-	// backtraking
 	print_map(game->map);
 	map_backtraking(game);
-//	printf("valor de p row %i, col %i",game->pr,game->pc);	
-	print_map(game->map);
-	print_map(game->maps);
 
+	printf("\ncoin cuantitigadfasdfas %i\n", game->coin);
 
-	int i;
-	int j;
- 	void *img_ptr ;
-	i = 32;
-	j = 32;
 	add_path_img(game);	
 	game->mlx_w = mlx_new_window (game->mlx, game->lenght_size  * 40, game->with_size * 40 , "Hello World");
-	printf("valor main game %p",game);
-	print_map(game->maps);
-	draw_window(game);
-	img_ptr = 	mlx_xpm_file_to_image(game->mlx, "sprite/wall.xpm", &i, &j);
-//	printf("valor de img %p",img_ptr);
-//	mlx_put_image_to_window(game->mlx, game->mlx_w, img_ptr, (1 *50), (1 * 50));
-	mlx_hook(game->mlx_w, 17, 1L << 0 , (void *)exit, NULL);
-	mlx_hook(game->mlx_w, 2, 1L << 0 , (void *) moviment, game);
-	mlx_loop(game->mlx);
-	//printf("pokemon negro");
-
-	//map_backtraking(game);
+//	draw_window(game);
+	fd = 0;
+	printf("\n 1 valor de fd %i\n",fd);
+	fd = mlx_hook(game->mlx_w, 2, 1L << 0 , (void *) moviment, game);
+fd = 	mlx_hook(game->mlx_w, 17, 1L << 0 , (void *)exit, NULL);
+	printf("\n 2 valor de fd %i\n",fd);
+		if (fd == -1)
+		{
+			printf("\n 3 valor de fd %i\n",fd);
+			return (0);
+		}
+		mlx_loop(game->mlx);
 //	errors_path(-303,game);
 	char *checkmalloc;
 	printf("\nmalloc 1 bit\n");
@@ -95,9 +81,8 @@ int main(int ac, char **av )
 int moviment(int keycode, t_game *game)
 {
 	int works;
-	printf("\npj %c , row %i, col %i\n",game->maps[game->pjy][game->pjx],game->pjy,game->pjx);
-//	printf("\n%i",keycode);
-
+//	printf("\ncoin cuantiti %i", game->coin);
+//	printf("press key 1");
 	if(keycode == 53 )
 		exit(0);
 	if (keycode == 13 || keycode == 126)
@@ -108,5 +93,9 @@ int moviment(int keycode, t_game *game)
 		works  = control_d(game);
 	if (keycode == 0 ||  keycode == 123)
 		works  = control_a(game);
-	return  (0);
+//	printf("\n posicion pj row = %i col = %i\n exit row = %i col = %i \n\n",game->pjy,game->pjx, game->exitr, game->exitc);
+//	if (game->coin == 0 && game->pjy == game->exitr && game->pjx == game->exitc)
+//		printf("you win");
+	works =  draw_window(game);
+	return  (works);
 }

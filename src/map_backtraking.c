@@ -6,10 +6,9 @@ void serch_player(char  **map , t_game *game)
 	int col;
 
 	row = 0;
-	col = 0;
-
-	while (map[row] )
+	while (map[row])
 	{
+		col = 0;
 		while(map[row][col])
 		{
 			if(map[row][col] == 'P')
@@ -17,12 +16,39 @@ void serch_player(char  **map , t_game *game)
 				game->pr = row;
 				game->pc = col;
 			}
+			if (map[row][col] == 'C')
+				game->coin++;
 			col++;
 		}
-		col = 0;
 		row++;
 	}
 }
+
+
+void serch_exitrc(t_game *game)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (game->maps[row])
+	{
+		col = 0;
+		while (game->maps[row][col])
+		{
+			if(game->maps[row][col] == 'E')
+			{
+				game->exitr = row;
+				game->exitc = col;
+			}
+		//	if (game->maps[row][col] == 'C')
+		//		game->coin++;
+			col++;
+		}
+		row++;
+	}
+}
+
 
 int bt_confirm(t_game *game, int  i, int j)
 {
@@ -50,11 +76,12 @@ void map_backtraking(t_game *game)
 {
 	serch_player(game->map, game);
 	game->exit = 0;
-	printf("\n############# antes valor de p exit%i ################\n",game->exit);
 	bt_confirm(game, game->pr,game->pc);
-	printf("\n######### despues valor de p exit%i ##############\n",game->exit);
 	if(game->coin != 0)
 		printf("error de moneda");
 	if(game->exit != 1)
 		printf("\nerror de exit\n");
+//	game->coin = 0;
+	serch_exitrc(game);
+	printf("\nvalor de coin  -===== %i", game->coin);
 }

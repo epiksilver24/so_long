@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 03:20:47 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/26 05:04:57 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 00:21:46 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ void add_path_img(t_game *game)
 }
 
 
-void draw_window(t_game *game)
+int draw_window(t_game *game)
 {
 	int row;
 	int col;
 	row = 0;
 	col = 0;
+
 	while (game->maps[row])
 	{
 		while (game->maps[row][col])
@@ -59,4 +60,24 @@ void draw_window(t_game *game)
 		col = 0;
 		row++;
 	}
+
+	if(!(game->pjy == game->exitr && game->pjx == game->exitc))
+		mlx_put_image_to_window(game->mlx,
+				game->mlx_w, game->dorrexit, game->exitc * 40, game->exitr * 40);
+
+
+	
+printf("\n\n posicion pj row = %i col = %i\n exit row = %i co    l = %i valor moneda %i \n\n",game->pjy, game->pjx, game->exitr, game->exitc , game->coin);
+
+
+	if (game->coin == 0 && game->pjy == game->exitr && game->pjx == game->exitc)
+	{
+		printf("you win");
+		printf("you win");
+		printf("you win");
+		printf("you win");
+		mlx_destroy_window(game->mlx, game->mlx_w);
+		return (-1);
+	}
+	return (0);
 }

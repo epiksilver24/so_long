@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/26 05:32:41 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 00:16:05 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_game
 	int		with_size;
 	int		pjy;
 	int		pjx;
+	int		exitr;
+	int		exitc;
 	int		pr;
 	int		pc;
 	int		coin;
@@ -58,7 +60,7 @@ int count_char(t_game *game, char pj2);
 int map_char_events(t_game *game);
 void map_backtraking(t_game *game);
 int bt_confirm(t_game *game, int i, int j);
-void draw_window(t_game *game);
+int draw_window(t_game *game);
 void src_tiles(t_game *game);
 int ft_close_game(t_game *game);
 void add_path_img(t_game *game);
@@ -67,5 +69,6 @@ int control_w( t_game *game);
 int control_s( t_game *game);
 int control_d( t_game *game);
 int control_a( t_game *game);
+void serch_exit(t_game *game);
 
 #endif
