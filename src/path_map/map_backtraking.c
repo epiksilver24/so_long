@@ -1,4 +1,4 @@
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
 void serch_player(char  **map , t_game *game)
 {

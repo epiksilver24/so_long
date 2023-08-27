@@ -1,4 +1,4 @@
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
 int count_char(t_game *game, char pj2)
 {

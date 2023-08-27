@@ -6,12 +6,12 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/26 04:24:49 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 02:38:24 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 #include <fcntl.h>
 
 //typedef struct s_game

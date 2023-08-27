@@ -1,9 +1,9 @@
 NAME := so_long
 
-SRC := src/map_struct.c src/main.c src/errors.c src/path_error.c  src/utils.c src/count_01CEP.c \
-	src/map_backtraking.c src/tiles_game.c src/map_draw.c src/exit_game.c \
-	src/controls/controlls.c
-
+SRC := src/path_map/map_struct.c src/main.c src/errors/errors.c src/path_map/path_error.c  src/utils.c src/path_map/count_01CEP.c \
+	src/path_map/map_backtraking.c  src/grafics/map_draw.c  \
+	src/controls/controlls.c src/path_map/ft_map_path.c
+# src/path_map/tiles_game.c
 INCLUDE		=	-I.
 
 LIBFT_DIR = libft

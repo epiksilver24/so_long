@@ -6,12 +6,14 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:21:58 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/25 05:19:09 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 03:02:23 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
+static void	sout_errors(t_game *game, int error);
+static void	free_map(t_game *game);
 int errors_path(int error, t_game *game)
 {
 	if (error < 0)
@@ -21,16 +23,17 @@ int errors_path(int error, t_game *game)
 	else if (error == -2)
 		write(1,"error create malloc",19);
 	else if (error == -3)
-		free_map(game, error);
+		sout_errors(game, error);
 	else if (error == -4)
-		free_map(game, error);
+		sout_errors(game, error);
 	else if (error == -5)
 		write(1,"error n",7);
 	else if (error == -7)
-		free_map(game,error);
+		sout_errors(game,error);
 	else if (error == -303)
-		free_map(game,error);
+		sout_errors(game,error);
 	free(game->map);
+	free(game->maps);
 	free(game);
 //	exit(EXIT_FAILURE);
 
@@ -39,13 +42,9 @@ int errors_path(int error, t_game *game)
 	return (1);
 }
 
-void	free_map(t_game *game, int error)
+static void	sout_errors(t_game *game, int error)
 {
-	int b;
-
-	b = -1;
-	while (game->map[++b])
-		free(game->map[b]);
+	free_map(game);
 //	free(game->map);
 	write(1,"error ", 6);
 	if (error == -4)
@@ -57,4 +56,23 @@ void	free_map(t_game *game, int error)
 	else if (error == -303)
 		write(1,"limpiando mapa",14);
 }
+
+static void	free_map(t_game *game)
+{
+	int	i;
+	
+	i = 0;
+	while (game->map[i])
+	{
+		free(game->map[i]);
+		i++;
+	}
+	i = 0;
+	while (game->maps[i])
+	{
+		free(game->maps[i]);
+		i++;
+	}
+}
+
 

@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 00:31:51 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 02:29:27 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int map_error_size(t_game *game);
 int map_tiles_correct(t_game *game);
 t_game *ft_lsnew();
 int errors_path(int error, t_game *game);
-void	free_map(t_game *game, int error);
+//void	free_map(t_game *game, int error);
+//void	sout_errors(t_game *game, int error);
 void print_map(char **map);
 void serch_player(char **map, t_game *game);
 int map_farlands(t_game *game);
@@ -70,5 +71,6 @@ int control_s( t_game *game);
 int control_d( t_game *game);
 int control_a( t_game *game);
 void serch_exit(t_game *game);
+int	ft_map_path(char *av, t_game *game);
 
 #endif
