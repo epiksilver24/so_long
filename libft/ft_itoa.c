@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:57:08 by scespede          #+#    #+#             */
-/*   Updated: 2023/06/12 12:28:05 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/28 01:53:38 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static int	lengn(int n)
 	}
 	while (n > 0)
 	{
-	n /= 10;
-	count++;
+		n /= 10;
+		count++;
 	}
 	return (count);
 }

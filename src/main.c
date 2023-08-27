@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 22:48:23 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/28 00:43:18 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	moviment(int keycode, t_game *game)
 	works = 0;
 	if (keycode == 53)
 		destroy_game(game);
-		//exit(0);
 	if (keycode == 13 || keycode == 126)
 		works = control_w(game);
 	if (keycode == 1 || keycode == 125)

@@ -6,11 +6,44 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 01:43:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/28 00:39:23 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/28 01:43:00 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
+
+int	count_char(t_game *game, char pj2)
+{
+	int	row;
+	int	col;
+	int	pj;
+
+	row = -1;
+	col = 0;
+	pj = 0;
+	while (game->map[++row])
+	{
+		while (game->map[row][col] && pj < 2)
+		{
+			if (game->map[row][col] == pj2)
+				pj++;
+			col++;
+		}
+		col = 0;
+	}
+	if (pj == 0 || pj > 1)
+		return (-8);
+	return (0);
+}
+
+int	map_char_events(t_game *game)
+{
+	if (count_char(game, 'P') == -8)
+		return (-4);
+	else if (count_char(game, 'E') == -8)
+		return (-4);
+	return (0);
+}
 
 int	ft_map_path(char *av, t_game *game)
 {

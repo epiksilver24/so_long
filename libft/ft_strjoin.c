@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:49:54 by scespede          #+#    #+#             */
-/*   Updated: 2023/05/26 11:53:30 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/28 01:54:03 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
 	size_t	leng;
-	if(!(ft_strlen(s1)) && !(ft_strlen(s2)))
+
+	if (!(ft_strlen(s1)) && !(ft_strlen(s2)))
 		return (ft_strdup(""));
 	str = NULL;
 	leng = (ft_strlen(s1) + ft_strlen(s2) + 1);

@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 06:18:47 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/28 00:16:22 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/28 01:03:50 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	serch_player(char **map, t_game *game)
 	int	row;
 	int	col;
 
+	game->coin = 0; 
 	row = 0;
 	while (map[row])
 	{
@@ -28,6 +29,8 @@ void	serch_player(char **map, t_game *game)
 				game->pr = row;
 				game->pc = col;
 			}
+			if (map[row][col] == 'C')
+				game->coin++;
 			col++;
 		}
 		row++;
@@ -87,12 +90,12 @@ void	map_backtraking(t_game *game)
 	bt_confirm(game, game->pr, game->pc);
 	if (game->coin != 0)
 	{
-		ft_putstr_fd("error map no correct", 1);
+		ft_putstr_fd("error map no coint correct", 1);
 		destroy_game(game);
 	}
 	if (game->exit != 1)
 	{
-		ft_putstr_fd("error map no correct", 1);
+		ft_putstr_fd("error map no exit correct", 1);
 		destroy_game(game);
 	}
 	serch_exitrc(game);
