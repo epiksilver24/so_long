@@ -6,38 +6,28 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 04:10:38 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 06:42:17 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/so_long.h"
-#include <fcntl.h>
-
-//typedef struct s_game
-//{
-//	char		**map;
-//	int			lenght_size;
-//	int 		with_size;
-//}	t_game;
-
 
 int	map_add(int fd, t_game *game)
 {
-	char *line;
-	char *all_line;
+	char	*line;
+	char	*all_line;
 
 	line = ft_strdup("");
 	all_line = ft_strdup("");
-	if(line == NULL || all_line == NULL)
+	if (line == NULL || all_line == NULL)
 		return (-2);
 	while (line)
 	{
 		free(line);
 		line = get_next_line(fd);
-		if(line)
+		if (line)
 		{
-			if(line && line[0] == '\n')
+			if (line && line[0] == '\n')
 			{
 				free(line);
 				free(all_line);
@@ -54,10 +44,10 @@ int	map_add(int fd, t_game *game)
 
 int	map_error_size(t_game *game)
 {
-	size_t len;
-	size_t compare;
-	int i;
-	
+	size_t	len;
+	size_t	compare;
+	int		i;
+
 	i = 0;
 	len = ft_strlen(game->map[0]);
 	while (game->map[i])
@@ -67,17 +57,18 @@ int	map_error_size(t_game *game)
 			return (-3);
 		i++;
 	}
-	game->lenght_size =  (int)len;
-	game->with_size =(int) i;
+	game->lenght_size = (int)len;
+	game->with_size = (int) i;
 	return (1);
 }
-int  map_tiles_correct(t_game *game)
+
+int	map_tiles_correct(t_game *game)
 {
 	int	indi;
 	int	a;
+	char	*f;
+
 	indi = 0;
-	char *f;
-	
 	game->coin = 0; 
 	f = "01CEP";
 	while (game->map[indi])
@@ -85,35 +76,32 @@ int  map_tiles_correct(t_game *game)
 		a = 0;
 		while (game->map[indi][a++])
 		{
-			if(game->map[indi][a] == 'C')
+			if (game->map[indi][a] == 'C')
 				game->coin++;
-		//	if (ft_strchr(f, game->map[indi][a]) == NULL)
-		//		return (-8);
 		}
 		indi++;
 	}
 	return (1);
 }
 
-
 int	map_farlands(t_game *game)
 {
-	int row;
-	int col;
+	int	row;
+	int	col;
 
 	row = 0;
 	col = -1;
-	while(game->map[row][++col])
-		if(game->map[row][col] != '1')
+	while (game->map[row][++col])
+		if (game->map[row][col] != '1')
 			return (-7);
 	col--;
 	row = -1;
 	while (game->map[++row])
-		if(game->map[row][col] != '1')
+		if (game->map[row][col] != '1')
 			return (-7);
 	row--;
 	while (col >= 0)
-	{	
+	{
 		if (game->map[row][col] != '1')
 			return (-7);
 		col--;
@@ -128,11 +116,11 @@ int	map_farlands(t_game *game)
 	return (0);
 }
 
-int map_char_events(t_game *game)
+int	map_char_events(t_game *game)
 {
 	if (count_char(game, 'P') == -8)
 		return (-4);
-	else if(count_char(game ,'E') == -8)
+	else if (count_char(game, 'E') == -8)
 		return (-4);
 	return (0);
 }
