@@ -16,8 +16,8 @@ void serch_player(char  **map , t_game *game)
 				game->pr = row;
 				game->pc = col;
 			}
-			if (map[row][col] == 'C')
-				game->coin++;
+		//	if (map[row][col] == 'C')
+		//		game->coin++;
 			col++;
 		}
 		row++;
@@ -41,8 +41,8 @@ void serch_exitrc(t_game *game)
 				game->exitr = row;
 				game->exitc = col;
 			}
-		//	if (game->maps[row][col] == 'C')
-		//		game->coin++;
+			if (game->maps[row][col] == 'C')
+				game->coin++;
 			col++;
 		}
 		row++;
@@ -83,5 +83,4 @@ void map_backtraking(t_game *game)
 		printf("\nerror de exit\n");
 //	game->coin = 0;
 	serch_exitrc(game);
-	printf("\nvalor de coin  -===== %i", game->coin);
 }

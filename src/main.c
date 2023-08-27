@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 02:34:20 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 04:18:36 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_game *ft_lsnew()
 	game->map = NULL;
 	game->lenght_size = -1;
 	game->with_size = -1;
+	game->move	= 0;
 	game->coin = 0;
 	return (game);
 }
@@ -35,11 +36,13 @@ int main(int ac, char **av )
 		return (0);
 	if(	ft_map_path(av[1], game) == 0)
 			return (0);
-	game->mlx = mlx_init();
-	print_map(game->map);
+	//game->mlx = mlx_init();
+	//print_map(game->map);
 	map_backtraking(game);
+	start_mlx(game);
 	add_path_img(game);	
-	game->mlx_w = mlx_new_window (game->mlx, game->lenght_size  * 40, game->with_size * 40 , "Hello World");
+	//game->mlx_w = mlx_new_window (game->mlx, game->lenght_size  * 40, game->with_size * 40 , "Hello World");
+	
 	draw_window(game);
 	
 	mlx_hook(game->mlx_w, 2, 1L << 0 , (void *) moviment, game);

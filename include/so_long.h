@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 02:29:27 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 04:17:17 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_game
 	char	*wall;
 	char	*pj;
 	char	*floor;
+	int move;
 }	t_game;
 
 
@@ -72,5 +73,6 @@ int control_d( t_game *game);
 int control_a( t_game *game);
 void serch_exit(t_game *game);
 int	ft_map_path(char *av, t_game *game);
+void start_mlx(t_game *game);
 
 #endif

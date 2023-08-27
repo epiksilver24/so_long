@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 02:38:24 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 04:10:38 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	map_error_size(t_game *game)
 	game->with_size =(int) i;
 	return (1);
 }
-// 0 espacio vacio; 1 muro; C moneda; E salida; P posicion inicial
 int  map_tiles_correct(t_game *game)
 {
 	int	indi;
@@ -88,8 +87,8 @@ int  map_tiles_correct(t_game *game)
 		{
 			if(game->map[indi][a] == 'C')
 				game->coin++;
-			if (ft_strchr(f, game->map[indi][a]) == NULL)
-				return (-4);
+		//	if (ft_strchr(f, game->map[indi][a]) == NULL)
+		//		return (-8);
 		}
 		indi++;
 	}
