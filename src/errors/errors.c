@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:21:58 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 07:16:30 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:48:21 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 static void	sout_errors(t_game *game, int error);
 static void	free_map(t_game *game);
+
+
+void destroy_game(t_game *game)
+{
+	ft_putstr_fd("\nfin del juego\n", 1);
+	mlx_destroy_window ( game->mlx, game->mlx_w );
+	free_map(game);
+	free(game);
+	exit(0);
+}
 
 int	errors_path(int error, t_game *game)
 {
@@ -33,8 +43,6 @@ int	errors_path(int error, t_game *game)
 			sout_errors(game, error);
 		else if (error == -303)
 			sout_errors(game, error);
-		free(game->map);
-		free(game->maps);
 		free(game);
 		return (-1);
 	}
@@ -60,15 +68,23 @@ static void	free_map(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map[i])
+	if (game->map[i])
 	{
-		free(game->map[i]);
-		i++;
+		while (game->map[i])
+		{
+			free(game->map[i]);
+			i++;
+		}
+		free(game->map);
 	}
 	i = 0;
-	while (game->maps[i])
+	if (game->maps[i])
 	{
-		free(game->maps[i]);
-		i++;
+		while (game->maps[i])
+		{
+			free(game->maps[i]);
+			i++;
+		}
+		free(game->maps);
 	}
 }

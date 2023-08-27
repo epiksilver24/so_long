@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:45:10 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 07:21:28 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:48:23 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_game	*ft_lsnew(void)
 int	main(int ac, char **av )
 {
 	t_game	*game;
-	char	*checkmalloc;
 
 	game = ft_lsnew();
 	if (ac != 2)
@@ -40,12 +39,10 @@ int	main(int ac, char **av )
 	if (ft_map_path(av[1], game) == 0)
 		return (0);
 	start_mlx(game);
+	ft_putstr_fd("start Game", 1);
 	mlx_hook(game->mlx_w, 17, 1L << 0, (void *) exit, NULL);
 	mlx_hook(game->mlx_w, 2, 1L << 0, (void *) moviment, game);
 	mlx_loop(game->mlx);
-	printf("\nmalloc 1 bit\n");
-	checkmalloc = malloc(1);
-	checkmalloc[0] = '\0';
 	return (0);
 }
 
@@ -55,7 +52,8 @@ int	moviment(int keycode, t_game *game)
 
 	works = 0;
 	if (keycode == 53)
-		exit(0);
+		destroy_game(game);
+		//exit(0);
 	if (keycode == 13 || keycode == 126)
 		works = control_w(game);
 	if (keycode == 1 || keycode == 125)

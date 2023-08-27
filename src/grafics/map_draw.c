@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 03:20:47 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 07:12:45 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:46:37 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ static int	print_hause(t_game *game)
 			game->mlx_w, game->dorrexit, game->exitc * 40, game->exitr * 40);
 	if (game->coin == 0 && game->pjy == game->exitr && game->pjx == game->exitc)
 	{
-		mlx_destroy_window(game->mlx, game->mlx_w);
+		ft_putstr_fd("\nyou win", 1);
+		destroy_game(game);
 		exit(0);
 		return (-1);
 	}

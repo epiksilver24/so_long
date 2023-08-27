@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 04:44:09 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 07:22:06 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:43:50 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int control_a( t_game *game);
 void serch_exit(t_game *game);
 int	ft_map_path(char *av, t_game *game);
 void start_mlx(t_game *game);
+void destroy_game(t_game *game);
 
 #endif

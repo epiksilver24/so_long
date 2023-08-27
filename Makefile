@@ -10,7 +10,8 @@ INCLUDE		=	-I.
 
 LIBFT_DIR = libft
 
-CC := cc
+CC := cc 
+#-g -fsanitize=address
 
 OBJS		=	$(patsubst %.c,%.o,$(SRC))
 OBJSR = $(SRC:.c=.o)
