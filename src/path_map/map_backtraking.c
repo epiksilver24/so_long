@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 06:18:47 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 06:23:37 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/28 00:16:22 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,14 @@ void	map_backtraking(t_game *game)
 	game->exit = 0;
 	bt_confirm(game, game->pr, game->pc);
 	if (game->coin != 0)
-		printf("error de moneda");
+	{
+		ft_putstr_fd("error map no correct", 1);
+		destroy_game(game);
+	}
 	if (game->exit != 1)
-		printf("\nerror de exit\n");
+	{
+		ft_putstr_fd("error map no correct", 1);
+		destroy_game(game);
+	}
 	serch_exitrc(game);
 }

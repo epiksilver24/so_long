@@ -6,7 +6,7 @@
 /*   By: scespede <scespede@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 15:47:37 by scespede          #+#    #+#             */
-/*   Updated: 2023/08/27 06:42:17 by scespede         ###   ########.fr       */
+/*   Updated: 2023/08/28 00:22:49 by scespede         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	map_error_size(t_game *game)
 	int		i;
 
 	i = 0;
+	printf("valor de map %p", game->map[0]);
 	len = ft_strlen(game->map[0]);
 	while (game->map[i])
 	{
